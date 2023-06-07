@@ -1,4 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit"
+import classNames from "classnames"
 import Link from "next/link"
 import { useRouter } from "next/router"
 
@@ -13,7 +14,7 @@ const Header = () => {
   const { pathname } = useRouter()
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className="sticky inset-x-0 top-0 z-50 bg-white shadow-sm">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -33,7 +34,12 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className={classNames(
+                "text-sm font-semibold leading-6 text-gray-900 hover:opacity-75",
+                {
+                  "text-primary": pathname.includes(item.href),
+                }
+              )}
             >
               {item.name}
             </a>

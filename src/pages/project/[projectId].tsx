@@ -1,7 +1,6 @@
 import { useGetVerifiedProjects } from "@/hooks/api/useGetVerifiedProjects"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { PaperClipIcon } from "@heroicons/react/20/solid"
 
 const App = () => {
   const { projects } = useGetVerifiedProjects()
@@ -16,7 +15,7 @@ const App = () => {
         <title>App | Gangabon</title>
       </Head>
       <main className="isolate">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:pt-24 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             {currentProject?.fields["Company Name (from Audited byy)"][0]}
           </h2>
