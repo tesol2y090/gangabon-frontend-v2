@@ -7,6 +7,7 @@ import { sepolia } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import "react-loading-skeleton/dist/skeleton.css"
 
 export const { chains, provider } = configureChains(
   [sepolia],
@@ -28,9 +29,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wgmiClient}>
       <RainbowKitProvider chains={chains}>
-        <div className="bg-white">
+        <div className="bg-white min-h-screen flex flex-col">
           <Header />
-          <Component {...pageProps} />
+          <div className="flex-1 mt-8">
+            <Component {...pageProps} />
+          </div>
           <Footer />
         </div>
       </RainbowKitProvider>

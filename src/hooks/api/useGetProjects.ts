@@ -41,7 +41,7 @@ function useGetProjects(param?: FetchParam, config?: FetchConfig) {
     projects: data
       ? data.records.filter((obj) => Object.keys(obj.fields).length !== 0)
       : [],
-    isLoading: !error && !Array.isArray(data),
+    isLoading: !error && Object.keys(data || {}).length === 0,
     isError: error !== undefined,
   }
 }

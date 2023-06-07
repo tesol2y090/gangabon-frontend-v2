@@ -1,11 +1,10 @@
 import { useGetProjects } from "@/hooks/api/useGetProjects"
 import Head from "next/head"
 import Link from "next/link"
+import Skeleton from "react-loading-skeleton"
 
 const App = () => {
-  const { projects } = useGetProjects()
-
-  console.log(projects)
+  const { projects, isLoading } = useGetProjects()
 
   return (
     <div className="bg-white">
@@ -19,6 +18,16 @@ const App = () => {
           </h2>
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            {isLoading &&
+              new Array(8).fill(0).map((_, i) => (
+                <div key={i} className="group relative cursor-pointer">
+                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                    <Skeleton className="w-full h-full" />
+                  </div>
+                  <Skeleton className="mt-5" height={10} />
+                  <Skeleton height={10} />
+                </div>
+              ))}
             {projects &&
               projects.map((product) => (
                 <Link
@@ -40,7 +49,7 @@ const App = () => {
                         {product.fields["Project Name"]}
                       </h3>
                       <p className="mt-1 text-sm text-gray-500">
-                        {product.fields["Company Name"]}
+                        {product.fields["Contact Person Full Name"]}
                       </p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">

@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 
 const navigation = [
   { name: "Project", href: "/app" },
+  { name: "Engineer", href: "/engineers" },
   { name: "dMRV", href: "/dmrv" },
   { name: "About", href: "/about" },
 ]
@@ -21,7 +22,7 @@ const Header = () => {
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Gangabon</span>
             <img
-              className="h-8 w-auto"
+              className="h-12 w-auto"
               src="/images/logo-with-text.svg"
               alt=""
             />
