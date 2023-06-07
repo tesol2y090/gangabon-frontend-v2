@@ -5,6 +5,8 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit"
 import { configureChains, createClient, WagmiConfig } from "wagmi"
 import { sepolia } from "wagmi/chains"
 import { publicProvider } from "wagmi/providers/public"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 export const { chains, provider } = configureChains(
   [sepolia],
@@ -26,7 +28,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wgmiClient}>
       <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />
+        <div className="bg-white">
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </div>
       </RainbowKitProvider>
     </WagmiConfig>
   )
