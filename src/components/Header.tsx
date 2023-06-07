@@ -4,8 +4,7 @@ import { useRouter } from "next/router"
 
 const navigation = [
   { name: "Project", href: "/app" },
-  { name: "Company", href: "/company" },
-  { name: "Engineer", href: "/engineer" },
+  { name: "dMRV", href: "/dmrv" },
   { name: "About", href: "/about" },
 ]
 

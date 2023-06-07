@@ -1,8 +1,11 @@
 import { useGetProjects } from "@/hooks/api/useGetProjects"
 import Head from "next/head"
+import Link from "next/link"
 
 const App = () => {
   const { projects } = useGetProjects()
+
+  console.log(projects)
 
   return (
     <div className="bg-white">
@@ -18,7 +21,11 @@ const App = () => {
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {projects &&
               projects.map((product) => (
-                <div key={product.id} className="group relative cursor-pointer">
+                <Link
+                  href={`/project/${product.id}`}
+                  key={product.id}
+                  className="group relative cursor-pointer"
+                >
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                     <img
                       src={product.fields.image}
@@ -40,7 +47,7 @@ const App = () => {
                       {product.fields["Project Type"]}
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
           </div>
         </div>

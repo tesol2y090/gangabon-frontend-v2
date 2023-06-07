@@ -20,7 +20,7 @@ export enum APIInfo {
 export interface GenerateURL {
   api?: API
   paths?: string[]
-  chainId?: number
+  tableId?: string
   param?: FetchParam
 }
 
@@ -34,12 +34,23 @@ export function generateUrl(param: GenerateURL): string {
   return concatUrl(configs.airTableApi, param)
 }
 
+export function generateAirTableUrl(param: GenerateURL): string {
+  return concatAirTableUrl(configs.airTableApi, param)
+}
+
 function concatUrl(baseUrl: string, p: GenerateURL): string {
   const _p = concatParam(p.param)
   const params = _p && Array.from(_p).length > 0 ? `?${_p}` : ""
   const url = [baseUrl, configs.baseId, configs.tableId]
     .join("/")
     .replace(/\/+$/, "")
+  return `${url}${params}`
+}
+
+function concatAirTableUrl(baseUrl: string, p: GenerateURL): string {
+  const _p = concatParam(p.param)
+  const params = _p && Array.from(_p).length > 0 ? `?${_p}` : ""
+  const url = [baseUrl, configs.baseId, p.tableId].join("/").replace(/\/+$/, "")
   return `${url}${params}`
 }
 

@@ -1,7 +1,8 @@
 import { useMemo } from "react"
 
 import { useSWRFetch } from "../useFetch"
-import { FetchConfig, FetchParam, generateUrl } from ".."
+import { FetchConfig, FetchParam, generateAirTableUrl } from ".."
+import { configs } from "@/configs"
 
 interface IProject {
   createdTime: string
@@ -31,7 +32,10 @@ interface IProjectsResponse {
 }
 
 function useGetProjects(param?: FetchParam, config?: FetchConfig) {
-  const url = useMemo(() => generateUrl({ param }), [param])
+  const url = useMemo(
+    () => generateAirTableUrl({ param, tableId: configs.tableId }),
+    [param]
+  )
   const { data, error } = useSWRFetch<IProjectsResponse>(url, config)
   return {
     projects: data
