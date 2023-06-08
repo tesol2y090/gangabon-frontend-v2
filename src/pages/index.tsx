@@ -194,11 +194,11 @@ export default function Home() {
             <p className="mt-6 text-base leading-7 text-gray-600">
               Get paid directly to your wallet with your expertise.
             </p>
-            <div className="mt-6 lg:flex lg:flex-1 lg:justify-center">
+            {/* <div className="mt-6 lg:flex lg:flex-1 lg:justify-center">
               <button className="flex w-40 items-center justify-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 Launch App
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </main>

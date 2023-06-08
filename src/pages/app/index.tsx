@@ -44,7 +44,7 @@ const App = () => {
                   </div>
                   <div className="mt-4 flex justify-between">
                     <div>
-                      <h3 className="text-sm text-gray-700">
+                      <h3 className="text-sm text-gray-700 font-bold">
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.fields["Project Name"]}
                       </h3>
