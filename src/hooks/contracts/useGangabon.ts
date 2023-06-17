@@ -19,6 +19,7 @@ export const useGangabon = (signer: ethers.Signer) => {
 
   const getApplication = useCallback(
     async (applicationId: number) => {
+      console.log(applicationId)
       return await gangabonContract?.applications(applicationId)
     },
     [gangabonContract, signer]

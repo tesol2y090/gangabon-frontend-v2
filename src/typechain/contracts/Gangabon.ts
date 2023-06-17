@@ -31,20 +31,16 @@ export interface GangabonInterface extends utils.Interface {
   functions: {
     "addressVoted(address,uint256)": FunctionFragment;
     "applicationId()": FunctionFragment;
-    "applicationIdMinting()": FunctionFragment;
     "applications(uint256)": FunctionFragment;
     "balanceOf(address,uint256)": FunctionFragment;
     "balanceOfBatch(address[],uint256[])": FunctionFragment;
-    "checkUpkeep(bytes)": FunctionFragment;
     "createApplication(string,string,uint256)": FunctionFragment;
     "deadlinePeriod()": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
-    "isMintReady()": FunctionFragment;
     "owner()": FunctionFragment;
     "passAmountNeeded()": FunctionFragment;
     "pause()": FunctionFragment;
     "paused()": FunctionFragment;
-    "performUpkeep(bytes)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)": FunctionFragment;
     "safeTransferFrom(address,address,uint256,uint256,bytes)": FunctionFragment;
@@ -64,20 +60,16 @@ export interface GangabonInterface extends utils.Interface {
     nameOrSignatureOrTopic:
       | "addressVoted"
       | "applicationId"
-      | "applicationIdMinting"
       | "applications"
       | "balanceOf"
       | "balanceOfBatch"
-      | "checkUpkeep"
       | "createApplication"
       | "deadlinePeriod"
       | "isApprovedForAll"
-      | "isMintReady"
       | "owner"
       | "passAmountNeeded"
       | "pause"
       | "paused"
-      | "performUpkeep"
       | "renounceOwnership"
       | "safeBatchTransferFrom"
       | "safeTransferFrom"
@@ -102,10 +94,6 @@ export interface GangabonInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "applicationIdMinting",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
     functionFragment: "applications",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
@@ -116,10 +104,6 @@ export interface GangabonInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "balanceOfBatch",
     values: [PromiseOrValue<string>[], PromiseOrValue<BigNumberish>[]]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "checkUpkeep",
-    values: [PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
     functionFragment: "createApplication",
@@ -137,10 +121,6 @@ export interface GangabonInterface extends utils.Interface {
     functionFragment: "isApprovedForAll",
     values: [PromiseOrValue<string>, PromiseOrValue<string>]
   ): string;
-  encodeFunctionData(
-    functionFragment: "isMintReady",
-    values?: undefined
-  ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "passAmountNeeded",
@@ -148,10 +128,6 @@ export interface GangabonInterface extends utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "pause", values?: undefined): string;
   encodeFunctionData(functionFragment: "paused", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "performUpkeep",
-    values: [PromiseOrValue<BytesLike>]
-  ): string;
   encodeFunctionData(
     functionFragment: "renounceOwnership",
     values?: undefined
@@ -220,20 +196,12 @@ export interface GangabonInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "applicationIdMinting",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "applications",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "balanceOfBatch",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "checkUpkeep",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -248,10 +216,6 @@ export interface GangabonInterface extends utils.Interface {
     functionFragment: "isApprovedForAll",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "isMintReady",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "passAmountNeeded",
@@ -259,10 +223,6 @@ export interface GangabonInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "pause", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "performUpkeep",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
@@ -490,8 +450,6 @@ export interface Gangabon extends BaseContract {
 
     applicationId(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    applicationIdMinting(overrides?: CallOverrides): Promise<[BigNumber]>;
-
     applications(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -531,11 +489,6 @@ export interface Gangabon extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber[]]>;
 
-    checkUpkeep(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<[boolean, string] & { upkeepNeeded: boolean }>;
-
     createApplication(
       _cid: PromiseOrValue<string>,
       _companyName: PromiseOrValue<string>,
@@ -551,8 +504,6 @@ export interface Gangabon extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    isMintReady(overrides?: CallOverrides): Promise<[boolean]>;
-
     owner(overrides?: CallOverrides): Promise<[string]>;
 
     passAmountNeeded(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -562,11 +513,6 @@ export interface Gangabon extends BaseContract {
     ): Promise<ContractTransaction>;
 
     paused(overrides?: CallOverrides): Promise<[boolean]>;
-
-    performUpkeep(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
 
     renounceOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -647,8 +593,6 @@ export interface Gangabon extends BaseContract {
 
   applicationId(overrides?: CallOverrides): Promise<BigNumber>;
 
-  applicationIdMinting(overrides?: CallOverrides): Promise<BigNumber>;
-
   applications(
     arg0: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -688,11 +632,6 @@ export interface Gangabon extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber[]>;
 
-  checkUpkeep(
-    arg0: PromiseOrValue<BytesLike>,
-    overrides?: CallOverrides
-  ): Promise<[boolean, string] & { upkeepNeeded: boolean }>;
-
   createApplication(
     _cid: PromiseOrValue<string>,
     _companyName: PromiseOrValue<string>,
@@ -708,8 +647,6 @@ export interface Gangabon extends BaseContract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
-  isMintReady(overrides?: CallOverrides): Promise<boolean>;
-
   owner(overrides?: CallOverrides): Promise<string>;
 
   passAmountNeeded(overrides?: CallOverrides): Promise<BigNumber>;
@@ -719,11 +656,6 @@ export interface Gangabon extends BaseContract {
   ): Promise<ContractTransaction>;
 
   paused(overrides?: CallOverrides): Promise<boolean>;
-
-  performUpkeep(
-    arg0: PromiseOrValue<BytesLike>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
 
   renounceOwnership(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -804,8 +736,6 @@ export interface Gangabon extends BaseContract {
 
     applicationId(overrides?: CallOverrides): Promise<BigNumber>;
 
-    applicationIdMinting(overrides?: CallOverrides): Promise<BigNumber>;
-
     applications(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -845,11 +775,6 @@ export interface Gangabon extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber[]>;
 
-    checkUpkeep(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<[boolean, string] & { upkeepNeeded: boolean }>;
-
     createApplication(
       _cid: PromiseOrValue<string>,
       _companyName: PromiseOrValue<string>,
@@ -865,8 +790,6 @@ export interface Gangabon extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    isMintReady(overrides?: CallOverrides): Promise<boolean>;
-
     owner(overrides?: CallOverrides): Promise<string>;
 
     passAmountNeeded(overrides?: CallOverrides): Promise<BigNumber>;
@@ -874,11 +797,6 @@ export interface Gangabon extends BaseContract {
     pause(overrides?: CallOverrides): Promise<void>;
 
     paused(overrides?: CallOverrides): Promise<boolean>;
-
-    performUpkeep(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<void>;
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
@@ -1062,8 +980,6 @@ export interface Gangabon extends BaseContract {
 
     applicationId(overrides?: CallOverrides): Promise<BigNumber>;
 
-    applicationIdMinting(overrides?: CallOverrides): Promise<BigNumber>;
-
     applications(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1078,11 +994,6 @@ export interface Gangabon extends BaseContract {
     balanceOfBatch(
       accounts: PromiseOrValue<string>[],
       ids: PromiseOrValue<BigNumberish>[],
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    checkUpkeep(
-      arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1101,8 +1012,6 @@ export interface Gangabon extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    isMintReady(overrides?: CallOverrides): Promise<BigNumber>;
-
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
     passAmountNeeded(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1112,11 +1021,6 @@ export interface Gangabon extends BaseContract {
     ): Promise<BigNumber>;
 
     paused(overrides?: CallOverrides): Promise<BigNumber>;
-
-    performUpkeep(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
 
     renounceOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1198,10 +1102,6 @@ export interface Gangabon extends BaseContract {
 
     applicationId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    applicationIdMinting(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
     applications(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1216,11 +1116,6 @@ export interface Gangabon extends BaseContract {
     balanceOfBatch(
       accounts: PromiseOrValue<string>[],
       ids: PromiseOrValue<BigNumberish>[],
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    checkUpkeep(
-      arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1239,8 +1134,6 @@ export interface Gangabon extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    isMintReady(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     passAmountNeeded(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1250,11 +1143,6 @@ export interface Gangabon extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    performUpkeep(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
 
     renounceOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }

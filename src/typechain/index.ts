@@ -32,14 +32,8 @@ export type { LinkTokenReceiver } from "./@chainlink/contracts/src/v0.7/LinkToke
 export { LinkTokenReceiver__factory } from "./factories/@chainlink/contracts/src/v0.7/LinkTokenReceiver__factory";
 export type { Operator } from "./@chainlink/contracts/src/v0.7/Operator";
 export { Operator__factory } from "./factories/@chainlink/contracts/src/v0.7/Operator__factory";
-export type { AutomationBase } from "./@chainlink/contracts/src/v0.8/AutomationBase";
-export { AutomationBase__factory } from "./factories/@chainlink/contracts/src/v0.8/AutomationBase__factory";
-export type { AutomationCompatible } from "./@chainlink/contracts/src/v0.8/AutomationCompatible";
-export { AutomationCompatible__factory } from "./factories/@chainlink/contracts/src/v0.8/AutomationCompatible__factory";
 export type { ChainlinkClient } from "./@chainlink/contracts/src/v0.8/ChainlinkClient";
 export { ChainlinkClient__factory } from "./factories/@chainlink/contracts/src/v0.8/ChainlinkClient__factory";
-export type { AutomationCompatibleInterface } from "./@chainlink/contracts/src/v0.8/interfaces/AutomationCompatibleInterface";
-export { AutomationCompatibleInterface__factory } from "./factories/@chainlink/contracts/src/v0.8/interfaces/AutomationCompatibleInterface__factory";
 export type { ENSInterface } from "./@chainlink/contracts/src/v0.8/interfaces/ENSInterface";
 export { ENSInterface__factory } from "./factories/@chainlink/contracts/src/v0.8/interfaces/ENSInterface__factory";
 export type { PointerInterface } from "./@chainlink/contracts/src/v0.8/interfaces/PointerInterface";

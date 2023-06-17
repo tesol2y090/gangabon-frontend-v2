@@ -23,7 +23,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [tick, setTick] = useState<number>(0)
   const currentProject = projects?.find(
-    (project) => project.fields["Issue ID"][0] === query.projectId
+    (project) => project.id === query.projectId
   )
 
   const increaseTick = () => setTick(tick + 1)
@@ -34,6 +34,8 @@ const App = () => {
       const data = await getApplication(
         Number(currentProject.fields["Issue ID"]) - 1
       )
+
+      console.log(data)
 
       setApplication(data)
     }
@@ -81,7 +83,11 @@ const App = () => {
       <main className="isolate">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            {currentProject?.fields["Legal Business Name (from Owned by company ID) (from Device ID)"][0]}
+            {
+              currentProject?.fields[
+                "Legal Business Name (from Owned by company ID) (from Device ID)"
+              ][0]
+            }
           </h2>
         </div>
 
@@ -156,7 +162,11 @@ const App = () => {
                   Website URL
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {currentProject?.fields["Website URL (from Owned by company ID) (from Device ID)"]}
+                  {
+                    currentProject?.fields[
+                      "Website URL (from Owned by company ID) (from Device ID)"
+                    ]
+                  }
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -164,7 +174,11 @@ const App = () => {
                   Company's Wallet Address
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {currentProject?.fields["Wallet Address (from Owned by company ID) (from Device ID)"]}
+                  {
+                    currentProject?.fields[
+                      "Wallet Address (from Owned by company ID) (from Device ID)"
+                    ]
+                  }
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -172,16 +186,12 @@ const App = () => {
                   Project Type
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {
-                    currentProject?.fields[
-                      "Project Type (from Device ID)"
-                    ]
-                  }
+                  {currentProject?.fields["Project Type (from Device ID)"]}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                Production Facility Name
+                  Production Facility Name
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                   {

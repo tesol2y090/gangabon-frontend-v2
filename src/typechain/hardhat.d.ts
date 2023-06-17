@@ -61,14 +61,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Operator__factory>;
     getContractFactory(
-      name: "AutomationBase",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.AutomationBase__factory>;
-    getContractFactory(
-      name: "AutomationCompatible",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.AutomationCompatible__factory>;
-    getContractFactory(
       name: "ChainlinkClient",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ChainlinkClient__factory>;
@@ -80,10 +72,6 @@ declare module "hardhat/types/runtime" {
       name: "ConfirmedOwnerWithProposal",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ConfirmedOwnerWithProposal__factory>;
-    getContractFactory(
-      name: "AutomationCompatibleInterface",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.AutomationCompatibleInterface__factory>;
     getContractFactory(
       name: "ChainlinkRequestInterface",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -226,16 +214,6 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Operator>;
     getContractAt(
-      name: "AutomationBase",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.AutomationBase>;
-    getContractAt(
-      name: "AutomationCompatible",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.AutomationCompatible>;
-    getContractAt(
       name: "ChainlinkClient",
       address: string,
       signer?: ethers.Signer
@@ -250,11 +228,6 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.ConfirmedOwnerWithProposal>;
-    getContractAt(
-      name: "AutomationCompatibleInterface",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.AutomationCompatibleInterface>;
     getContractAt(
       name: "ChainlinkRequestInterface",
       address: string,

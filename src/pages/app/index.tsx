@@ -6,8 +6,6 @@ import Skeleton from "react-loading-skeleton"
 const App = () => {
   const { projects, isLoading } = useGetVerifiedProjects()
 
-  console.table(projects)
-
   return (
     <div className="bg-white">
       <Head>

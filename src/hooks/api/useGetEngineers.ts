@@ -10,7 +10,7 @@ interface IProject {
     "Company Name": string
     "Full Name": string
     "Position Title": string
-    "image": string
+    image: string
   }
   id: string
 }
@@ -25,7 +25,7 @@ function useGetEngineers(param?: FetchParam, config?: FetchConfig) {
     [param]
   )
   const { data, error } = useSWRFetch<IProjectsResponse>(url, config)
-  console.log(data)
+
   return {
     engineers: data
       ? data.records.filter((obj) => Object.keys(obj.fields).length !== 0)
