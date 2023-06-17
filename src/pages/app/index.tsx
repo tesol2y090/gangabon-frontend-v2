@@ -1,10 +1,12 @@
-import { useGetProjects } from "@/hooks/api/useGetProjects"
+import { useGetVerifiedProjects } from "@/hooks/api/useGetVerifiedProjects"
 import Head from "next/head"
 import Link from "next/link"
 import Skeleton from "react-loading-skeleton"
 
 const App = () => {
-  const { projects, isLoading } = useGetProjects()
+  const { projects, isLoading } = useGetVerifiedProjects()
+
+  console.table(projects)
 
   return (
     <div className="bg-white">
@@ -37,8 +39,8 @@ const App = () => {
                 >
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                     <img
-                      src={product.fields.image}
-                      alt={product.fields["Project Name"]}
+                      src={product.fields["Satellite Photo"]}
+                      alt={product.fields["Company Name (from Audited by)"]}
                       className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                     />
                   </div>
@@ -46,14 +48,22 @@ const App = () => {
                     <div>
                       <h3 className="text-sm text-gray-700 font-bold">
                         <span aria-hidden="true" className="absolute inset-0" />
-                        {product.fields["Project Name"]}
+                        {product.fields["Company Name (from Audited by)"]}
                       </h3>
                       <p className="mt-1 text-sm text-gray-500">
-                        {product.fields["Contact Person Full Name"]}
+                        {
+                          product.fields[
+                            "Legal Business Name (from Owned by company ID) (from Device ID)"
+                          ]
+                        }
                       </p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
-                      {product.fields["Project Type"]}
+                      {
+                        product.fields[
+                          "Production Facility Name (from Device ID)"
+                        ]
+                      }
                     </p>
                   </div>
                 </Link>

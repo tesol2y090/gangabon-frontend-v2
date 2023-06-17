@@ -69,13 +69,12 @@ function useGetVerifiedProjects(param?: FetchParam, config?: FetchConfig) {
     [param]
   )
   const { data, error } = useSWRFetch<IProjectsResponse>(url, config)
-  console.log(data)
 
   return {
     projects: data
       ? data.records.filter((obj) => Object.keys(obj.fields).length !== 0)
       : [],
-    isLoading: !error && !Array.isArray(data),
+    isLoading: !error && Object.keys(data || {}).length === 0,
     isError: error !== undefined,
   }
 }

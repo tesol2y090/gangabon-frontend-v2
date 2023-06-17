@@ -4,7 +4,7 @@ import { useSWRFetch } from "../useFetch"
 import { FetchConfig, FetchParam, generateAirTableUrl } from ".."
 import { configs } from "@/configs"
 
-interface IProject {
+interface IDevice {
   createdTime: string
   fields: {
     "Owned by company ID": string
@@ -14,9 +14,9 @@ interface IProject {
     "Project Type": string
     "Production Facility Name": string
     "Facility Address": string
-    "Latitude": string
+    Latitude: string
     "Device ID": string
-    "Longitude": string
+    Longitude: string
     "Device Model": string
     "Installed Capacity": string
     "Meter or Measurement ID(s)": string
@@ -36,21 +36,21 @@ interface IProject {
     "A single line electrical diagram": string
     "Double Counting check": string
     "Expired date": string
-    "image": string
+    image: string
   }
   id: string
 }
 
-interface IProjectsResponse {
-  records: IProject[]
+interface IDevicesResponse {
+  records: IDevice[]
 }
 
-function useGetProjects(param?: FetchParam, config?: FetchConfig) {
+function useGetDevices(param?: FetchParam, config?: FetchConfig) {
   const url = useMemo(
     () => generateAirTableUrl({ param, tableId: configs.tableId }),
     [param]
   )
-  const { data, error } = useSWRFetch<IProjectsResponse>(url, config)
+  const { data, error } = useSWRFetch<IDevicesResponse>(url, config)
   return {
     devices: data
       ? data.records.filter((obj) => Object.keys(obj.fields).length !== 0)
@@ -60,4 +60,4 @@ function useGetProjects(param?: FetchParam, config?: FetchConfig) {
   }
 }
 
-export { useGetProjects }
+export { useGetDevices }
