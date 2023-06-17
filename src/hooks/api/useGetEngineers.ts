@@ -10,6 +10,7 @@ interface IProject {
     "Company Name": string
     "Full Name": string
     "Position Title": string
+    "image": string
   }
   id: string
 }

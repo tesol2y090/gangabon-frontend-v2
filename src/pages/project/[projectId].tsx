@@ -23,7 +23,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [tick, setTick] = useState<number>(0)
   const currentProject = projects?.find(
-    (project) => project.fields["Project ID"][0] === query.projectId
+    (project) => project.fields["Issue ID"][0] === query.projectId
   )
 
   const increaseTick = () => setTick(tick + 1)
@@ -32,7 +32,7 @@ const App = () => {
     if (!currentProject) return
     const getProject = async () => {
       const data = await getApplication(
-        Number(currentProject.fields["Verified ID"]) - 1
+        Number(currentProject.fields["Issue ID"]) - 1
       )
 
       setApplication(data)
@@ -40,7 +40,7 @@ const App = () => {
 
     const getUserIsVote = async () => {
       const data = await getIsVote(
-        Number(currentProject.fields["Verified ID"]) - 1
+        Number(currentProject.fields["Issue ID"]) - 1
       )
 
       setIsVote(data || false)
@@ -56,7 +56,7 @@ const App = () => {
     setIsLoading(true)
     try {
       const tx = await vote(
-        Number(currentProject.fields["Verified ID"]) - 1,
+        Number(currentProject.fields["Issue ID"]) - 1,
         userVote
       )
 
@@ -81,7 +81,7 @@ const App = () => {
       <main className="isolate">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            {currentProject?.fields["Company Name (from Audited byy)"][0]}
+            {currentProject?.fields["Legal Business Name (from Owned by company ID) (from Device ID)"][0]}
           </h2>
         </div>
 
@@ -132,7 +132,7 @@ const App = () => {
                   Audited By
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {currentProject?.fields["Full Name (from Audited byy)"]}
+                  {currentProject?.fields["Audited by"]}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -140,7 +140,7 @@ const App = () => {
                   Position Title
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {currentProject?.fields["Position Title (from Audited byy)"]}
+                  {currentProject?.fields["Position Title (from Audited by)"]}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -148,55 +148,55 @@ const App = () => {
                   Company Name
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {currentProject?.fields["Company Name (from Audited byy)"]}
+                  {currentProject?.fields["Company Name (from Audited by)"]}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  CO2 Calculator - Additionality
+                  Website URL
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {currentProject?.fields["CO2 Calculator - Additionality"]}
+                  {currentProject?.fields["Website URL (from Owned by company ID) (from Device ID)"]}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  CO2 Calculator - Baseline Scenario
+                  Company's Wallet Address
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {currentProject?.fields["CO2 Calculator - Baseline Scenario"]}
+                  {currentProject?.fields["Wallet Address (from Owned by company ID) (from Device ID)"]}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  CO2 Calculator - Amount of CO2 Emissions Avoided
+                  Project Type
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                   {
                     currentProject?.fields[
-                      "CO2 Calculator - Amount of CO2 Emissions Avoided"
+                      "Project Type (from Device ID)"
                     ]
                   }
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  Length Period of the Project Carbon Credit
+                Production Facility Name
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                   {
                     currentProject?.fields[
-                      "Length Period of the Project Carbon Credit"
+                      "Production Facility Name (from Device ID)"
                     ]
                   }
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  Risk Assessments
+                  Facility Address
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  {currentProject?.fields["Risk Assessments"]}
+                  {currentProject?.fields["Facility Address (from Device ID)"]}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

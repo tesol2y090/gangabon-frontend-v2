@@ -13,7 +13,7 @@ const App = () => {
       <main className="isolate">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Our Engineers
+            Our Verifiers
           </h2>
         </div>
 
@@ -34,7 +34,7 @@ const App = () => {
                 <div className="flex gap-x-4">
                   <img
                     className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src={person.fields["image"]}
                     alt=""
                   />
                   <div className="min-w-0 flex-auto">

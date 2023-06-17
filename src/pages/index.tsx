@@ -170,7 +170,7 @@ export default function Home() {
           <div>
             <iframe
               className="airtable-embed"
-              src="https://airtable.com/embed/shrOQ6euG7ntN1kRe?backgroundColor=green"
+              src="https://airtable.com/embed/shrbbb0tMvQ074GBA?backgroundColor=green"
               frameBorder="0"
               width="100%"
               height="533"
